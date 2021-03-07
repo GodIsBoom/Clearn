@@ -30,7 +30,7 @@ bool InsertNextNode(DNode *p,DNode *s){
     {
         return false;
     }
-    if (p->next!=NULL`)
+    if (p->next!=NULL)
     {
         p->next->prior=s;
     }
@@ -56,5 +56,55 @@ bool DeleteNextNode(DNode *p){
     return true;
 }
 
+DLinkList List_HeadInsert(DLinkList &L){  //头插法,每次把新数据插到第一个结点,也就是逆序生成
+    int x;
+    DNode *s;
+    L=(DNode*)malloc(sizeof(DNode));
+    L->next=NULL;
+    L->prior=NULL;
+    scanf("%d",&x);
+    while (x!=10086)
+    {
+        s=(DNode*)malloc(sizeof(DNode));
+        s->data=x;
+        s->next=L->next;    //s指向原来的1结点
+        s->prior=L;
+        L->next=s;          //头结点指向新结点s,s成为新的1结点
+        scanf("%d",&x);
+    }
+    return L;
+}
 
+DLinkList List_TailInsert(DLinkList &L){  //尾插法,每次向尾部添加一个结点
+    int x;
+    L=(DNode*)malloc(sizeof(DNode));
+    DNode *s,*r=L;  //r指向上一个,s指向新结点,进行接力连结
+    scanf("%d",&x);
+    while (x!=10086)    //输入10086停止录入
+    {
+        s=(DNode*)malloc(sizeof(DNode));
+        s->data=x;  //新结点装好数据
+        s->prior=r;
+        r->next=s;  //上一个结点指向新结点
+        r=s;        //r指向新结点
+        scanf("%d",&x);
+    }
+    r->next=NULL;
+    return L;
+}
 
+int main(){
+
+    DLinkList L;
+    List_HeadInsert(L);
+    DNode *p=L;
+
+    while (p->next!=NULL)
+    {
+        p=p->next;
+        printf("%d \n",p->data);
+    }
+
+    system("pause");
+    return 0;
+}
