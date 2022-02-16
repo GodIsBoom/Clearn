@@ -135,5 +135,8 @@ int main(){
         p=p->next;
         printf("%d \n",p->data);
     }
+    p->next=(LNode*)malloc(sizeof(LNode));
+    p->next->data=520;
+    printf("%d \n",p->next->data);
     system("pause");   
 }

@@ -1,15 +1,16 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-int main()
-{
-    int a = 2;
+int main(){
+    float a=10;
+    float b=3;
+    float c=a/b;
     for (int i = 0; i < 5; i++)
     {
-        a = a + 3;
-        printf("%d\n", a);
+        printf("test\n");
     }
+    
+    printf("%f \n",c);
 
-    cout << "hello" << endl;
-    return 0;
+    system("pause");
 }
